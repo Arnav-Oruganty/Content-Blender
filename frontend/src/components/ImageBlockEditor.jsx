@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 export function ImageBlockEditor({ block, onUpdate }) {
@@ -8,11 +8,18 @@ export function ImageBlockEditor({ block, onUpdate }) {
   const [caption, setCaption] = useState(block?.caption || "");
   const [sourceType, setSourceType] = useState(block?.sourceType || "url");
 
+  // ✅ FIX: keep preview synced with parent block
+  useEffect(() => {
+    setPreview(block?.url || "");
+  }, [block?.url]);
+
+  // ✅ FILE UPLOAD HANDLER
   const handleFileUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
+
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -29,6 +36,7 @@ export function ImageBlockEditor({ block, onUpdate }) {
 
       const result = await response.json();
       const uploadedUrl = result.data.path || result.data.url;
+
       setPreview(uploadedUrl);
       setSourceType("local");
 
@@ -38,6 +46,7 @@ export function ImageBlockEditor({ block, onUpdate }) {
         altText,
         caption,
       });
+
       toast.success("Image uploaded successfully");
     } catch (error) {
       toast.error(`Upload failed: ${error.message}`);
@@ -46,8 +55,10 @@ export function ImageBlockEditor({ block, onUpdate }) {
     }
   };
 
+  // ✅ URL CHANGE
   const handleUrlChange = (newUrl) => {
     setPreview(newUrl);
+
     onUpdate({
       url: newUrl,
       sourceType: "url",
@@ -56,8 +67,22 @@ export function ImageBlockEditor({ block, onUpdate }) {
     });
   };
 
+  // ✅ MODE SWITCH FIX (VERY IMPORTANT)
+  const handleSourceChange = (newType) => {
+    setSourceType(newType);
+
+    onUpdate({
+      url: preview,
+      sourceType: newType,
+      altText,
+      caption,
+    });
+  };
+
+  // ✅ ALT TEXT
   const handleAltTextChange = (newAltText) => {
     setAltText(newAltText);
+
     onUpdate({
       url: preview,
       sourceType,
@@ -66,8 +91,10 @@ export function ImageBlockEditor({ block, onUpdate }) {
     });
   };
 
+  // ✅ CAPTION
   const handleCaptionChange = (newCaption) => {
     setCaption(newCaption);
+
     onUpdate({
       url: preview,
       sourceType,
@@ -78,38 +105,39 @@ export function ImageBlockEditor({ block, onUpdate }) {
 
   return (
     <div style={{ padding: "12px", fontSize: 13 }}>
+      {/* ─── SOURCE SELECT ─── */}
       <div style={{ marginBottom: 16 }}>
-        <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: "var(--text-2)" }}>
+        <label style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>
           Image Source
         </label>
 
         <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-          <label style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, cursor: "pointer" }}>
+          <label style={{ flex: 1, cursor: "pointer" }}>
             <input
               type="radio"
-              name="sourceType"
               value="url"
               checked={sourceType === "url"}
-              onChange={(e) => setSourceType(e.target.value)}
+              onChange={() => handleSourceChange("url")}
             />
-            <span>URL</span>
+            URL
           </label>
-          <label style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, cursor: "pointer" }}>
+
+          <label style={{ flex: 1, cursor: "pointer" }}>
             <input
               type="radio"
-              name="sourceType"
               value="local"
               checked={sourceType === "local"}
-              onChange={(e) => setSourceType(e.target.value)}
+              onChange={() => handleSourceChange("local")}
             />
-            <span>Upload</span>
+            Upload
           </label>
         </div>
 
+        {/* ─── URL INPUT ─── */}
         {sourceType === "url" ? (
           <input
             type="text"
-            placeholder="https://example.com/image.jpg"
+            placeholder="https://images.unsplash.com/..."
             value={preview}
             onChange={(e) => handleUrlChange(e.target.value)}
             style={{
@@ -117,13 +145,10 @@ export function ImageBlockEditor({ block, onUpdate }) {
               padding: "6px 8px",
               border: "1px solid var(--border)",
               borderRadius: 6,
-              fontSize: 12,
-              fontFamily: "var(--font)",
-              outline: "none",
-              boxSizing: "border-box",
             }}
           />
         ) : (
+          /* ─── FILE UPLOAD ─── */
           <label
             style={{
               display: "block",
@@ -133,7 +158,6 @@ export function ImageBlockEditor({ block, onUpdate }) {
               textAlign: "center",
               cursor: uploading ? "not-allowed" : "pointer",
               opacity: uploading ? 0.6 : 1,
-              transition: "all .2s",
             }}
           >
             <input
@@ -143,82 +167,53 @@ export function ImageBlockEditor({ block, onUpdate }) {
               disabled={uploading}
               style={{ display: "none" }}
             />
-            {uploading ? "Uploading..." : "Click to upload or drag image"}
+            {uploading ? "Uploading..." : "Click to upload image"}
           </label>
         )}
       </div>
 
-      {/* Preview */}
+      {/* ─── PREVIEW ─── */}
       {preview && (
         <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: "var(--text-3)", marginBottom: 6 }}>
-            PREVIEW
-          </div>
+          <div style={{ fontSize: 11, marginBottom: 6 }}>PREVIEW</div>
           <img
             src={preview}
-            alt="Preview"
+            alt="preview"
             style={{
               width: "100%",
               maxHeight: 180,
               objectFit: "cover",
               borderRadius: 6,
-              border: "1px solid var(--border)",
             }}
             onError={() => {
-              toast.error("Failed to load image");
-              setPreview("");
+              toast.error("Invalid image URL");
             }}
           />
         </div>
       )}
 
-      {/* Alt text */}
-      <div style={{ marginBottom: 12 }}>
-        <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: "var(--text-2)" }}>
-          Alt Text
-        </label>
-        <textarea
-          value={altText}
-          onChange={(e) => handleAltTextChange(e.target.value)}
-          placeholder="Describe the image for accessibility..."
-          style={{
-            width: "100%",
-            padding: "6px 8px",
-            border: "1px solid var(--border)",
-            borderRadius: 6,
-            fontSize: 12,
-            fontFamily: "var(--font)",
-            outline: "none",
-            boxSizing: "border-box",
-            resize: "vertical",
-            minHeight: 60,
-          }}
-        />
-      </div>
+      {/* ─── ALT TEXT ─── */}
+      <textarea
+        value={altText}
+        onChange={(e) => handleAltTextChange(e.target.value)}
+        placeholder="Alt text..."
+        style={{
+          width: "100%",
+          marginBottom: 10,
+          padding: 6,
+        }}
+      />
 
-      {/* Caption */}
-      <div>
-        <label style={{ display: "block", fontWeight: 600, marginBottom: 6, color: "var(--text-2)" }}>
-          Caption
-        </label>
-        <textarea
-          value={caption}
-          onChange={(e) => handleCaptionChange(e.target.value)}
-          placeholder="Optional image caption..."
-          style={{
-            width: "100%",
-            padding: "6px 8px",
-            border: "1px solid var(--border)",
-            borderRadius: 6,
-            fontSize: 12,
-            fontFamily: "var(--font)",
-            outline: "none",
-            boxSizing: "border-box",
-            resize: "vertical",
-            minHeight: 60,
-          }}
-        />
-      </div>
+      {/* ─── CAPTION ─── */}
+      <textarea
+        value={caption}
+        onChange={(e) => handleCaptionChange(e.target.value)}
+        placeholder="Caption..."
+        style={{
+          width: "100%",
+          padding: 6,
+        }}
+      />
     </div>
   );
 }

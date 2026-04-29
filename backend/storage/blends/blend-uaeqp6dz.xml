@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-uaeqp6dz">
+  <meta title="Untitled document" layout="custom" created="2026-04-29T18:50:26.864Z"></meta>
+  <include ref="b1" type="title" uid="ur5lztqw">
+    <content>Document Title</content>
+  </include>
+  <include ref="b2" type="section" uid="ui9sqpbg">
+    <content>Section Heading</content>
+  </include>
+  <include ref="b3" type="paragraph" uid="u1r8r6fz">
+    <content>Paragraph content here.</content>
+  </include>
+  <include ref="block ID" type="paragraph" uid="uqo0d7i7">
+    <content>ra123</content>
+  </include>
+  <include ref="b4" type="image" uid="uwjws9q3">
+    <metadata sourceType="url" url="https://static.vecteezy.com/system/resources/thumbnails/049/855/708/small/nature-background-high-resolution-wallpaper-for-a-serene-and-stunning-view-free-photo.jpg" altText="" caption=""></metadata>
+    <content>image.jpg</content>
+  </include>
+</cblend>
