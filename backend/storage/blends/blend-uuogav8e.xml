@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-uuogav8e">
+  <meta title="Untitled document" layout="custom" created="2026-04-21T19:00:34.082Z"></meta>
+  <include ref="block ID" type="paragraph" uid="u2at43t8">
+    <content>ra123</content>
+  </include>
+  <include ref="b1" type="title" uid="u7r6c5ap">
+    <content>Document Title</content>
+  </include>
+  <include ref="b3" type="paragraph" uid="ub4vqq5d">
+    <content>Paragraph content here.</content>
+  </include>
+  <include ref="b2" type="section" uid="u4m2qvqx">
+    <content>Section Heading</content>
+  </include>
+  <include ref="b1" type="title" uid="ud2huzuo">
+    <content>Document Title</content>
+  </include>
+</cblend>

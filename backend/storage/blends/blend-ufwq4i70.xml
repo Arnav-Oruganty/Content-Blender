@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-ufwq4i70">
+  <meta title="Untitled document" layout="article" created="2026-04-21T19:39:13.565Z"></meta>
+  <include ref="u9mz4mmc" type="hero" uid="uo77ze30">
+    <content>The Big Story
+In-depth analysis and perspective</content>
+  </include>
+  <include ref="u6bfuse8" type="section" uid="ua89hjew">
+    <content>Opening</content>
+  </include>
+  <include ref="uhnxbs13" type="paragraph" uid="urylm78p">
+    <content>Set the scene here. Hook the reader with a compelling first paragraph that draws them into the narrative.</content>
+  </include>
+  <include ref="udvore0u" type="quote" uid="uyq3l207">
+    <content>The most important thing is not to stop questioning. Curiosity has its own reason for existing.</content>
+  </include>
+  <include ref="u4tmrxli" type="section" uid="ub086crz">
+    <content>The Details</content>
+  </include>
+  <include ref="u79l0pdz" type="paragraph" uid="u0a3rfig">
+    <content>Expand on your main argument. Provide evidence, examples, and analysis that support your thesis.</content>
+  </include>
+  <include ref="ui1j2u2l" type="list" uid="upj8kkvw">
+    <item>Key insight one</item>
+    <item>Key insight two</item>
+    <item>Key insight three</item>
+  </include>
+  <include ref="urfcjcic" type="section" uid="up7s4y5c">
+    <content>Takeaway</content>
+  </include>
+  <include ref="u7gadnzk" type="paragraph" uid="ugkejwo2">
+    <content>Wrap up with your conclusion and what the reader should do or think differently about.</content>
+  </include>
+</cblend>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u4we7awk">
+  <meta title="Untitled document" layout="custom" created="2026-04-28T09:26:52.339Z"></meta>
+  <include ref="b1" type="title" uid="uth9so48">
+    <content>Document Title</content>
+  </include>
+  <include ref="utr1eake" type="row" uid="upfc5hzd" containerType="row">
+    <content></content>
+    <include ref="b1" type="title" uid="u1hogsrx" containerType="row">
+      <content>Document Title</content>
+    </include>
+    <include ref="b1" type="title" uid="uodc2yuj" containerType="row">
+      <content>Document Title</content>
+    </include>
+    <include ref="b1" type="title" uid="udvyr0rl" containerType="row">
+      <content>Document Title</content>
+    </include>
+  </include>
+</cblend>

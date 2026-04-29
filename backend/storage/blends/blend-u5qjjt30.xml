@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u5qjjt30">
+  <meta title="Untitled document" layout="layout-ufuc6l5f" created="2026-04-23T07:15:34.685Z"></meta>
+  <include ref="b1" type="title" uid="u9buom8j">
+    <content>Document Title</content>
+  </include>
+  <include ref="ujgblkyw" type="row" uid="uaellmxz">
+    <content></content>
+    <include ref="img1" type="image" uid="urxtqg1k" containerType="row">
+      <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+  </include>
+  <include ref="uebupqa3" type="row" uid="um2udpuw">
+    <content></content>
+    <include ref="img1" type="image" uid="ubjq6ahx" containerType="row">
+      <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="u0ivsamn" containerType="row">
+      <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+  </include>
+</cblend>

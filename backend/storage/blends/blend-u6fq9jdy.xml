@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u6fq9jdy">
+  <meta title="Untitled document" layout="custom" created="2026-04-22T18:12:02.006Z"></meta>
+  <include ref="ue7fmcl6" type="row" uid="utpk4gho" containerType="row">
+    <content></content>
+    <include ref="img1" type="image" uid="uezpntbw" containerType="row">
+      <metadata sourceType="url" url="/uploads/7efcfc22-75e3-482b-a2a5-55fcc805553d.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="uwcqmxkh" containerType="row">
+      <metadata sourceType="url" url="/uploads/7efcfc22-75e3-482b-a2a5-55fcc805553d.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+  </include>
+</cblend>

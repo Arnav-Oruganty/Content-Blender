@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-ujq1s27f">
+  <meta title="Untitled document" layout="custom" created="2026-04-28T09:23:38.939Z"></meta>
+  <include ref="uhkyertd" type="row" uid="u7quqrrt" containerType="row">
+    <content></content>
+    <include ref="Image2" type="image" uid="u4zmvstu" containerType="row">
+      <metadata sourceType="local" url="/uploads/0d5770bb-dd15-4cf6-895b-4be314ace1e6.webp" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="umub2ho7" containerType="row">
+      <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+  </include>
+</cblend>

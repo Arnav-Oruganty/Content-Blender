@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-uktatepz">
+  <meta title="Untitled document" layout="casestudy" created="2026-04-23T07:43:16.633Z"></meta>
+  <include ref="ujgp6znr" type="hero" uid="uxhkgtqz">
+    <content>How Acme Co. 10x&apos;d Their Conversion
+A deep-dive into product-led growth</content>
+  </include>
+  <include ref="umd2ql8i" type="section" uid="ucmchz7c">
+    <content>The Challenge</content>
+  </include>
+  <include ref="uos5ydul" type="paragraph" uid="us11rnnw">
+    <content>Acme Co. was struggling with a 2.3% conversion rate and high churn. The onboarding flow was confusing, and users were dropping off before experiencing the core value.</content>
+  </include>
+  <include ref="urdylbfs" type="section" uid="uw9czzpb">
+    <content>The Approach</content>
+  </include>
+  <include ref="uli5lr9z" type="list" uid="u412kaz7">
+    <item>Mapped the full user journey</item>
+    <item>Identified 3 critical drop-off points</item>
+    <item>Redesigned onboarding in 2 weeks</item>
+    <item>A/B tested 6 variants</item>
+  </include>
+  <include ref="u7wyf06x" type="section" uid="uf9lindx">
+    <content>The Solution</content>
+  </include>
+  <include ref="b4" type="image" uid="u91a5fr3">
+    <metadata sourceType="local" url="/uploads/df084ba1-0cc3-4ef3-8964-aa5b29b62191.webp" altText="" caption=""></metadata>
+    <content>image.jpg</content>
+  </include>
+  <include ref="uv4uw90q" type="paragraph" uid="u550ttka">
+    <content>We rebuilt the onboarding from scratch using a jobs-to-be-done framework. Every step was tied to a clear user outcome, not a product feature.</content>
+  </include>
+  <include ref="u847vw1i" type="section" uid="ukalc1kx">
+    <content>The Results</content>
+  </include>
+  <include ref="unk5x77v" type="card" uid="u20zgi4u">
+    <item>📈 Conversion: 2.3% → 23%</item>
+    <item>📉 Churn: -61%</item>
+    <item>⏱ Time-to-value: -40%</item>
+    <item>⭐ NPS: +44 points</item>
+  </include>
+  <include ref="uhw2nrp8" type="quote" uid="ukbd1u5d">
+    <content>This was the highest-impact project we&apos;ve run in three years. The results speak for themselves.</content>
+  </include>
+</cblend>

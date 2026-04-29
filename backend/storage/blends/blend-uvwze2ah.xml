@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-uvwze2ah">
+  <meta title="Untitled document" layout="layout-ucp9s0yu" created="2026-04-29T05:48:51.992Z"></meta>
+  <include ref="uy2o9y5g" type="row" uid="uewry8nc" columns="4" gap="16px" layout="horizontal">
+    <content></content>
+    <include ref="Image2" type="image" uid="u5pana7t" containerType="row">
+      <metadata sourceType="local" url="/uploads/0d5770bb-dd15-4cf6-895b-4be314ace1e6.webp" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="uul01nyk" containerType="row">
+      <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="umnsc7z7" containerType="row">
+      <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+    <include ref="Image2" type="image" uid="u107hc36" containerType="row">
+      <metadata sourceType="local" url="/uploads/0d5770bb-dd15-4cf6-895b-4be314ace1e6.webp" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+      <content></content>
+    </include>
+  </include>
+  <include ref="uta8w1hw" type="row" uid="uo0ykpp5" columns="2" gap="16px" layout="horizontal">
+    <content></content>
+    <include ref="b4" type="image" uid="ud94ld0t" containerType="row">
+      <content>image.jpg</content>
+    </include>
+    <include ref="b7" type="hero" uid="uxxjuubv" containerType="row">
+      <content>Welcome
+Subtitle here</content>
+    </include>
+  </include>
+</cblend>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbank>
+  <cblock id="b1" type="title" name="Page Title" version="1.0">
+    <content>Document Title</content>
+  </cblock>
+  <cblock id="b2" type="section" name="Section Heading" version="1.0">
+    <content>Section Heading</content>
+  </cblock>
+  <cblock id="b3" type="paragraph" name="Body Paragraph" version="1.0">
+    <content>Paragraph content here.</content>
+  </cblock>
+  <cblock id="b4" type="image" name="Image Block" version="1.0">
+    <content>image.jpg</content>
+  </cblock>
+  <cblock id="b5" type="quote" name="Pull Quote" version="1.0">
+    <content>A memorable quote.</content>
+  </cblock>
+  <cblock id="b6" type="list" name="Bullet List" version="1.0">
+    <content></content>
+    <item>Item one</item>
+    <item>Item two</item>
+    <item>Item three</item>
+  </cblock>
+  <cblock id="b7" type="hero" name="Hero Banner" version="1.0">
+    <content>Welcome
+Subtitle here</content>
+  </cblock>
+  <cblock id="b8" type="card" name="Card Grid" version="1.0">
+    <content></content>
+    <item>Card One</item>
+    <item>Card Two</item>
+    <item>Card Three</item>
+  </cblock>
+  <cblock id="block ID" type="paragraph" name="NAMR" version="1.0">
+    <content>ra123</content>
+  </cblock>
+  <cblock id="img1" type="image" name="cybersec" version="1.0">
+    <content></content>
+    <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+  </cblock>
+  <cblock id="Image2" type="image" name="Campus Photo IIITB" version="1.0">
+    <content></content>
+    <metadata sourceType="local" url="/uploads/0d5770bb-dd15-4cf6-895b-4be314ace1e6.webp" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+  </cblock>
+</cbank>

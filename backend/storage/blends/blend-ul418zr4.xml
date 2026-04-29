@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-ul418zr4">
+  <meta title="12312" layout="custom" created="2026-04-21T19:57:52.097Z"></meta>
+  <include ref="b1" type="title" uid="uhqjsr10">
+    <content>Document Title</content>
+  </include>
+  <include ref="b2" type="section" uid="u71qky77">
+    <content>Section Heading</content>
+  </include>
+  <include ref="b2" type="section" uid="u6eovuqw">
+    <content>Section Heading</content>
+  </include>
+  <include ref="b1" type="title" uid="uauum8a3">
+    <content>Document Title</content>
+  </include>
+  <include ref="b4" type="image" uid="unsbun43">
+    <content>image.jpg</content>
+  </include>
+  <include ref="block ID" type="paragraph" uid="u6gf5fns">
+    <content>ra123</content>
+  </include>
+</cblend>

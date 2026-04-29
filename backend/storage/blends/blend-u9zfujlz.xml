@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u9zfujlz">
+  <meta title="Untitled document" layout="template-uwa343vw" created="2026-04-22T18:57:09.457Z"></meta>
+  <include ref="unizi96m" type="row" uid="uiyqrfzn" containerType="row">
+    <content></content>
+    <include ref="img1" type="image" uid="utwgvtsg" containerType="row">
+      <metadata sourceType="url" url="/uploads/7efcfc22-75e3-482b-a2a5-55fcc805553d.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="u2s9t05d" containerType="row">
+      <metadata sourceType="url" url="/uploads/7efcfc22-75e3-482b-a2a5-55fcc805553d.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+    <include ref="img1" type="image" uid="uomxesa1" containerType="row">
+      <metadata sourceType="url" url="/uploads/7efcfc22-75e3-482b-a2a5-55fcc805553d.png" altText="" caption=""></metadata>
+      <content></content>
+    </include>
+  </include>
+</cblend>
