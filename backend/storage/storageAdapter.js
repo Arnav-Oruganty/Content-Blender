@@ -1,25 +1,16 @@
 /**
  * storageAdapter.js
  *
- * Returns a unified storage interface regardless of whether the
- * STORAGE_BACKEND env var is "file" or "mongo".
+ * Returns a unified storage interface for file-based XML storage.
  *
- * Both adapters expose:
+ * Exposes:
  *   CBank  – getCBank(), saveCBank(blocks)
  *   CBlend – listBlends(), getBlend(id), saveBlend(doc), deleteBlend(id)
  */
 
-const BACKEND = process.env.STORAGE_BACKEND || "file";
-
-let adapter;
+const adapter = require("./fileAdapter");
 
 function getAdapter() {
-  if (adapter) return adapter;
-  if (BACKEND === "mongo") {
-    adapter = require("./mongoAdapter");
-  } else {
-    adapter = require("./fileAdapter");
-  }
   return adapter;
 }
 

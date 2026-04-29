@@ -4,7 +4,6 @@ const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
 
-const { connectDB } = require("./utils/db");
 const errorHandler = require("./middleware/errorHandler");
 
 const cbankRouter = require("./routes/cbank");
@@ -51,12 +50,9 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 4000;
 
 async function boot() {
-  if (process.env.STORAGE_BACKEND === "mongo") {
-    await connectDB();
-  }
   app.listen(PORT, () => {
     console.log(`\n✅  Content Blender API running on http://localhost:${PORT}`);
-    console.log(`   Storage backend : ${process.env.STORAGE_BACKEND || "file"}`);
+    console.log(`   Storage backend : file (XML-based)`);
     console.log(`   Environment     : ${process.env.NODE_ENV || "development"}\n`);
   });
 }
