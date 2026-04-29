@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u0j645h2">
+  <meta title="PL1" layout="landing" created="2026-04-29T19:18:46.317Z"></meta>
+  <include ref="uuva1m93" type="hero" uid="u25spixj">
+    <content>Build Something Amazing
+The fastest way to ship your ideas</content>
+  </include>
+  <include ref="u3opr9fz" type="section" uid="usutho37">
+    <content>Why it works</content>
+  </include>
+  <include ref="u5cmrhcg" type="card" uid="upy6k9fb">
+    <item>⚡ Blazing fast</item>
+    <item>🔒 Secure by default</item>
+    <item>📦 Zero config</item>
+    <item>🌍 Global CDN</item>
+  </include>
+  <include ref="ug1imnn6" type="section" uid="uykytpkb">
+    <content>How it works</content>
+  </include>
+  <include ref="uznftgtw" type="paragraph" uid="ud2vcwrg">
+    <content>Three simple steps. Sign up in seconds, drop in your content, and go live instantly. No credit card required.</content>
+  </include>
+  <include ref="undydm74" type="list" uid="u61aei0y">
+    <item>Create your account</item>
+    <item>Add your content blocks</item>
+    <item>Publish to the world</item>
+  </include>
+  <include ref="u5998n1b" type="quote" uid="uuexy51h">
+    <content>We shipped our entire documentation site in under an hour. Absolutely game-changing.</content>
+  </include>
+  <include ref="ug2mpecn" type="section" uid="ulyy3if7">
+    <content>Get started today</content>
+  </include>
+  <include ref="u7sgk6oc" type="paragraph" uid="ujtoa8qq">
+    <content>Join thousands of teams already using Content Blender to build faster.</content>
+  </include>
+</cblend>
