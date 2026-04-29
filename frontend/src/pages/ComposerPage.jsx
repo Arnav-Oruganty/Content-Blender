@@ -331,49 +331,6 @@ function BlendItemEditor({ item, idx, onUpdate, onRemove, onDragStart, onDragOve
       </div>
       <div className="blend-item-body" style={{ minHeight: "80px", position: "relative" }}>
         {editor}
-        {/* Resize handle */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            width: "20px",
-            height: "20px",
-            background: "var(--accent)",
-            cursor: "nwse-resize",
-            borderRadius: "0 0 4px 0",
-            opacity: 0.3,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "10px",
-            color: "white",
-          }}
-          onMouseDown={(e) => {
-            e.preventDefault();
-            const startX = e.clientX;
-            const startY = e.clientY;
-            const startWidth = item.width ? parseInt(item.width) : 400;
-            const startHeight = item.height ? parseInt(item.height) : 120;
-
-            const handleMouseMove = (e) => {
-              const newWidth = Math.max(200, startWidth + (e.clientX - startX));
-              const newHeight = Math.max(80, startHeight + (e.clientY - startY));
-              onUpdate(idx, { width: `${newWidth}px`, height: `${newHeight}px` });
-            };
-
-            const handleMouseUp = () => {
-              document.removeEventListener("mousemove", handleMouseMove);
-              document.removeEventListener("mouseup", handleMouseUp);
-            };
-
-            document.addEventListener("mousemove", handleMouseMove);
-            document.addEventListener("mouseup", handleMouseUp);
-          }}
-          title="Drag to resize"
-        >
-          ⤡
-        </div>
       </div>
     </div>
   );
@@ -686,10 +643,6 @@ export default function ComposerPage() {
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <span className="pill">{blend.blocks.length} block{blend.blocks.length !== 1 ? "s" : ""}</span>
           </div>
-        </div>
-
-        <div style={{ padding: "8px 10px", borderBottom: "1px solid var(--border)", flexShrink: 0, display: "flex", gap: 6, alignItems: "center" }}>
-          <span style={{ fontSize: 11, color: "var(--text-2)", fontWeight: 500 }}>💡 Tip: Drag the ⤡ icon at the bottom-right of each block to resize</span>
         </div>
 
         <div

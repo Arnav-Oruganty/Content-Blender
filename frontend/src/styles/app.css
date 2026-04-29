@@ -182,7 +182,7 @@
   gap: 8px;
   padding: 10px;
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
   min-height: 0;
   background: var(--bg-1);
   /* align-items: flex-start; */
@@ -225,9 +225,16 @@
 
 /* ── Bottom toolbar ──────────────────────────────────────────────────── */
 .blend-toolbar {
-  display: flex; gap: 6px; padding: 8px 10px;
-  border-top: 1px solid var(--border); background: var(--bg-0);
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-0);
   flex-shrink: 0;
+
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
 }
 
 /* ── Preview pane ────────────────────────────────────────────────────── */
