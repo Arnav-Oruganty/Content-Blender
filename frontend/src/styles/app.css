@@ -235,6 +235,22 @@
   position: sticky;
   bottom: 0;
   z-index: 100;
+  
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.blend-toolbar::-webkit-scrollbar {
+  display: none;
+}
+.blend-toolbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.blend-toolbar > * {
+  flex-shrink: 0;
 }
 
 /* ── Preview pane ────────────────────────────────────────────────────── */

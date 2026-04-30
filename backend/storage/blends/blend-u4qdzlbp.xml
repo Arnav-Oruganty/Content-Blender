@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u4qdzlbp">
+  <meta title="shallow copy 1" layout="landing" created="2026-04-30T09:26:34.923Z" copyMode="shallow"></meta>
+  <include type="image" uid="u4rc3wcn" ref="img1"></include>
+  <include type="hero" uid="ufb57zhn" ref="u5q1leag">
+    <content>Build Something Amazing
+The fastest way to ship your ideas</content>
+  </include>
+  <include type="section" uid="upswwt7u" ref="u1if41cp">
+    <content>Why it works</content>
+  </include>
+  <include type="card" uid="usxvtue1" ref="up0vm86u">
+    <item>⚡ Blazing fast</item>
+    <item>🔒 Secure by default</item>
+    <item>📦 Zero config</item>
+    <item>🌍 Global CDN</item>
+  </include>
+  <include type="section" uid="upb761dh" ref="u6ve61ye">
+    <content>How it works</content>
+  </include>
+  <include type="paragraph" uid="uous3rdq" ref="uf3r50du">
+    <content>Three simple steps. Sign up in seconds, drop in your content, and go live instantly. No credit card required.</content>
+  </include>
+  <include type="list" uid="umc0xamv" ref="unbxu2ql">
+    <item>Create your account</item>
+    <item>Add your content blocks</item>
+    <item>Publish to the world</item>
+  </include>
+  <include type="quote" uid="ur1dh5jy" ref="u0wecknc">
+    <content>We shipped our entire documentation site in under an hour. Absolutely game-changing.</content>
+  </include>
+  <include type="section" uid="u0palmfl" ref="uqjpg1jr">
+    <content>Get started today</content>
+  </include>
+  <include type="paragraph" uid="u189n8up" ref="u0gq7spl">
+    <content>Join thousands of teams already using Content Blender to build faster.</content>
+  </include>
+  <include type="row" uid="urwncfja" ref="ugp2qmzd" containerType="row" columns="2" gap="16px" layout="horizontal">
+    <include type="card" uid="umbtly2g" ref="b8" containerType="row"></include>
+    <include type="paragraph" uid="u94a5guo" ref="b3" containerType="row"></include>
+    <include type="paragraph" uid="ufv8zde2" ref="b3" containerType="row"></include>
+  </include>
+</cblend>

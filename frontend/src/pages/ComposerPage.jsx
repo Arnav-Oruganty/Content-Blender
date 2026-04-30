@@ -584,6 +584,13 @@ export default function ComposerPage() {
     }
   }
 
+  function handleNewBlend() {
+    if (window.confirm("Start a new document? Any unsaved changes will be lost.")) {
+      blend.clear();
+      navigate("/");
+    }
+  }
+
   function handleRename() {
     const n = window.prompt("Document name:", blend.blendTitle);
     if (n?.trim()) blend.setBlendTitle(n.trim());
@@ -704,6 +711,7 @@ export default function ComposerPage() {
         </div>
 
         <div className="blend-toolbar">
+          <button className="btn btn-primary" onClick={handleNewBlend}>+ New</button>
           <button className="btn" onClick={() => blend.addRow(2)}>+ Row</button>
           <button className="btn" onClick={blend.clear}>Clear</button>
           <button className="btn" onClick={handleRename}>Rename</button>
