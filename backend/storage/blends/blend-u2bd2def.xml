@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u2bd2def">
+  <meta title="testcopydeep" layout="custom" created="2026-04-30T06:28:25.420Z" copyMode="deep"></meta>
+  <include type="title" uid="uo3i1bgk">
+    <content>Document Title</content>
+  </include>
+  <include type="paragraph" uid="u5b652u8">
+    <content>ra123</content>
+  </include>
+  <include type="image" uid="uljsi7qk">
+    <metadata sourceType="local" url="/uploads/0d5770bb-dd15-4cf6-895b-4be314ace1e6.webp" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+    <content></content>
+  </include>
+  <include type="image" uid="utbx0mqy">
+    <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+    <content></content>
+  </include>
+</cblend>

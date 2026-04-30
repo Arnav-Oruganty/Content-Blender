@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-ujggfisg">
+  <meta title="SHAL1" layout="custom" created="2026-04-30T06:56:57.765Z" copyMode="shallow"></meta>
+  <include type="title" uid="uzjooprp" ref="b1"></include>
+  <include type="section" uid="uh71irhm" ref="b2"></include>
+  <include type="paragraph" uid="uzlmwpbt" ref="b3"></include>
+  <include type="paragraph" uid="u8ky0g83" ref="block ID"></include>
+</cblend>

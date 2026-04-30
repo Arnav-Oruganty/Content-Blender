@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-uz7xv6vx">
+  <meta title="shallow" layout="custom" created="2026-04-30T06:33:35.363Z"></meta>
+  <include type="image" uid="uplv3rfl" ref="Image2">
+    <metadata sourceType="local" url="/uploads/5bbd7436-e929-4090-b485-0708aa26d591.jpeg" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+    <content></content>
+  </include>
+  <include type="image" uid="ufu51l0j" ref="img1">
+    <metadata sourceType="url" url="/uploads/cybersec.png" altText="" caption=""></metadata>
+    <content></content>
+  </include>
+</cblend>

@@ -182,12 +182,15 @@ ${bodyParts.join("\n")}
 </html>`;
 }
 
+const { resolveShallowCopy } = require("../utils/blendResolver");
+
 // GET /api/export/blend/:id/xml
 router.get("/blend/:id/xml", async (req, res, next) => {
   try {
     const doc = await storage.getBlend(req.params.id);
     if (!doc) return res.status(404).json({ error: "Blend not found" });
-    const xml = buildCBlendXML(doc);
+    const resolvedDoc = await resolveShallowCopy(doc);
+    const xml = buildCBlendXML(resolvedDoc);
     res.set("Content-Type", "application/xml");
     res.set("Content-Disposition", `attachment; filename="${req.params.id}.xml"`);
     res.send(xml);
@@ -199,7 +202,8 @@ router.get("/blend/:id/html", async (req, res, next) => {
   try {
     const doc = await storage.getBlend(req.params.id);
     if (!doc) return res.status(404).json({ error: "Blend not found" });
-    const html = await blendToHTML(doc);
+    const resolvedDoc = await resolveShallowCopy(doc);
+    const html = await blendToHTML(resolvedDoc);
     res.set("Content-Type", "text/html");
     res.set("Content-Disposition", `attachment; filename="${req.params.id}.html"`);
     res.send(html);
@@ -213,7 +217,8 @@ router.get("/blend/:id/pdf", async (req, res, next) => {
     const doc = await storage.getBlend(req.params.id);
     if (!doc) return res.status(404).json({ error: "Blend not found" });
     
-    const html = await blendToHTML(doc);
+    const resolvedDoc = await resolveShallowCopy(doc);
+    const html = await blendToHTML(resolvedDoc);
     
     // Launch browser with timeout
     browser = await puppeteer.launch({

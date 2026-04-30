@@ -12,8 +12,8 @@ function normalizeBlock(b) {
     uid:     b.uid || uuidv4().slice(0, 8),
     ref:     b.ref || b.uid || uuidv4().slice(0, 8),
     type:    b.type,
-    content: b.content ?? "",
-    items:   b.items   ?? [],
+    content: b.content !== undefined ? b.content : undefined,
+    items:   b.items !== undefined ? b.items : undefined,
     // Image metadata
     sourceType: b.sourceType ?? "url",
     url:        b.url        ?? "",
@@ -56,12 +56,15 @@ router.get("/", async (_req, res, next) => {
   } catch (e) { next(e); }
 });
 
+const { resolveShallowCopy, prepareShallowCopy } = require("../utils/blendResolver");
+
 // GET /api/cblend/:id
 router.get("/:id", param("id").notEmpty(), validate, async (req, res, next) => {
   try {
     const doc = await storage.getBlend(req.params.id);
     if (!doc) return res.status(404).json({ error: "Blend not found" });
-    res.json({ ok: true, data: doc });
+    const resolvedDoc = await resolveShallowCopy(doc);
+    res.json({ ok: true, data: resolvedDoc });
   } catch (e) { next(e); }
 });
 
@@ -70,7 +73,8 @@ router.get("/:id/xml", param("id").notEmpty(), validate, async (req, res, next) 
   try {
     const doc = await storage.getBlend(req.params.id);
     if (!doc) return res.status(404).json({ error: "Blend not found" });
-    const xml = buildCBlendXML(doc);
+    const resolvedDoc = await resolveShallowCopy(doc);
+    const xml = buildCBlendXML(resolvedDoc);
     res.set("Content-Type", "application/xml").send(xml);
   } catch (e) { next(e); }
 });
@@ -85,11 +89,16 @@ router.post("/", blendRules, validate, async (req, res, next) => {
         title:   req.body.meta?.title   ?? "Untitled",
         layout:  req.body.meta?.layout  ?? "custom",
         created: req.body.meta?.created ?? new Date().toISOString(),
+        copyMode: req.body.meta?.copyMode ?? "shallow",
       },
       blocks: (req.body.blocks ?? []).map((b) => normalizeBlock(b)),
     };
-    await storage.saveBlend(doc);
-    res.status(201).json({ ok: true, data: doc });
+    const preparedDoc = await prepareShallowCopy(doc);
+    await storage.saveBlend(preparedDoc);
+    
+    // Return resolved doc to frontend so it has full content populated
+    const resolvedDoc = await resolveShallowCopy(preparedDoc);
+    res.status(201).json({ ok: true, data: resolvedDoc });
   } catch (e) { next(e); }
 });
 
@@ -105,13 +114,18 @@ router.put("/:id", blendRules, validate, async (req, res, next) => {
         title:   req.body.meta?.title   ?? existing.meta?.title,
         layout:  req.body.meta?.layout  ?? existing.meta?.layout,
         created: existing.meta?.created ?? new Date().toISOString(),
+        copyMode: req.body.meta?.copyMode ?? existing.meta?.copyMode ?? "shallow",
       },
       blocks: req.body.blocks !== undefined
         ? req.body.blocks.map((b) => normalizeBlock(b))
         : existing.blocks,
     };
-    await storage.saveBlend(doc);
-    res.json({ ok: true, data: doc });
+    const preparedDoc = await prepareShallowCopy(doc);
+    await storage.saveBlend(preparedDoc);
+    
+    // Return resolved doc to frontend so it has full content populated
+    const resolvedDoc = await resolveShallowCopy(preparedDoc);
+    res.json({ ok: true, data: resolvedDoc });
   } catch (e) { next(e); }
 });
 

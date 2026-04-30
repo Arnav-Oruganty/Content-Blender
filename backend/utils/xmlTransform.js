@@ -98,6 +98,7 @@ function parseCBlendXML(xml) {
       title:   meta["@_title"]   ?? "Untitled",
       layout:  meta["@_layout"]  ?? "custom",
       created: meta["@_created"] ?? new Date().toISOString(),
+      copyMode: meta["@_copyMode"] ?? "shallow",
     },
     blocks: includes.map((inc) => normaliseInclude(inc, includes)),
   };
@@ -109,8 +110,8 @@ function normaliseInclude(inc, allIncludes = []) {
     uid:     inc["@_uid"] ?? inc["@_ref"],
     ref:     inc["@_ref"] ?? inc["@_uid"],
     type:    inc["@_type"],
-    content: inc.content ?? "",
-    items:   Array.isArray(inc.item) ? inc.item : inc.item ? [inc.item] : [],
+    content: inc.content !== undefined ? inc.content : undefined,
+    items:   inc.item !== undefined ? (Array.isArray(inc.item) ? inc.item : [inc.item]) : undefined,
     // Size properties
     width:      inc["@_width"]  ?? "100%",
     height:     inc["@_height"] ?? "auto",
@@ -131,6 +132,7 @@ function normaliseInclude(inc, allIncludes = []) {
 }
 
 function buildCBlendXML(doc) {
+  const isDeepCopy = doc.meta?.copyMode === "deep";
   const obj = {
     "?xml": { "@_version": "1.0", "@_encoding": "UTF-8" },
     cblend: {
@@ -140,18 +142,26 @@ function buildCBlendXML(doc) {
         "@_layout":  doc.meta?.layout  ?? "custom",
         "@_created": doc.meta?.created ?? new Date().toISOString(),
       },
-      include: (doc.blocks ?? []).map((b) => buildIncludeElement(b)),
+      include: (doc.blocks ?? []).map((b) => buildIncludeElement(b, isDeepCopy)),
     },
   };
+  
+  if (doc.meta?.copyMode) {
+    obj.cblend.meta["@_copyMode"] = doc.meta.copyMode;
+  }
+  
   return builder.build(obj);
 }
 
-function buildIncludeElement(b) {
+function buildIncludeElement(b, isDeepCopy = false) {
   const base = {
-    "@_ref":  b.ref ?? b.uid,
     "@_type": b.type,
     "@_uid":  b.uid,
   };
+  
+  if (!isDeepCopy) {
+    base["@_ref"] = b.ref ?? b.uid;
+  }
 
   // Add size properties
   if (b.width && b.width !== "100%") {
@@ -190,10 +200,10 @@ function buildIncludeElement(b) {
   }
 
   // Add content or items
-  if (b.items?.length) {
+  if (b.items !== undefined && b.items !== null && b.items.length > 0) {
     base.item = b.items;
-  } else {
-    base.content = b.content ?? "";
+  } else if (b.content !== undefined && b.content !== null) {
+    base.content = b.content;
   }
 
   // Add nested children for row containers

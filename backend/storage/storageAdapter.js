@@ -8,10 +8,14 @@
  *   CBlend – listBlends(), getBlend(id), saveBlend(doc), deleteBlend(id)
  */
 
-const adapter = require("./fileAdapter");
+const fileAdapter = require("./fileAdapter");
+const basexAdapter = require("./basexAdapter");
 
 function getAdapter() {
-  return adapter;
+  if (process.env.STORAGE_BACKEND === "basex") {
+    return basexAdapter;
+  }
+  return fileAdapter;
 }
 
 module.exports = {

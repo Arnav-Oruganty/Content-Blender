@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-un5i7b31">
+  <meta title="DEEP1" layout="custom" created="2026-04-30T06:56:13.825Z" copyMode="deep"></meta>
+  <include type="title" uid="u07x94o9">
+    <content>Document Title</content>
+  </include>
+  <include type="section" uid="ubcvwuq3">
+    <content>Section Heading</content>
+  </include>
+  <include type="paragraph" uid="u7phbolm">
+    <content>Paragraph content here.</content>
+  </include>
+</cblend>

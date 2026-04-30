@@ -1,14 +1,31 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { cblendApi } from "../utils/api";
 import { uid, createRowBlock } from "../utils/blocks";
 import toast from "react-hot-toast";
 
 export function useCBlend() {
-  const [blendId,    setBlendId]    = useState(null);
-  const [blendTitle, setBlendTitle] = useState("Untitled document");
-  const [layout,     setLayout]     = useState(null);
-  const [blocks,     setBlocks]     = useState([]);
+  const [blendId,    setBlendId]    = useState(() => sessionStorage.getItem("cblend_id") || null);
+  const [blendTitle, setBlendTitle] = useState(() => sessionStorage.getItem("cblend_title") || "Untitled document");
+  const [layout,     setLayout]     = useState(() => sessionStorage.getItem("cblend_layout") || null);
+  const [blocks,     setBlocks]     = useState(() => {
+    try {
+      const saved = sessionStorage.getItem("cblend_blocks");
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
   const [saving,     setSaving]     = useState(false);
+  const [copyMode,   setCopyMode]   = useState(() => sessionStorage.getItem("cblend_copyMode") || "shallow");
+
+  // Auto-save to sessionStorage
+  useEffect(() => {
+    if (blendId) sessionStorage.setItem("cblend_id", blendId);
+    else sessionStorage.removeItem("cblend_id");
+    sessionStorage.setItem("cblend_title", blendTitle);
+    if (layout) sessionStorage.setItem("cblend_layout", layout);
+    else sessionStorage.removeItem("cblend_layout");
+    sessionStorage.setItem("cblend_blocks", JSON.stringify(blocks));
+    sessionStorage.setItem("cblend_copyMode", copyMode);
+  }, [blendId, blendTitle, layout, blocks, copyMode]);
 
   // ── Block mutations ────────────────────────────────────────────────────
   const addBlock = useCallback((blockDef, atIndex) => {
@@ -164,6 +181,9 @@ export function useCBlend() {
   const clear = useCallback(() => {
     setBlocks([]);
     setLayout(null);
+    setBlendId(null);
+    setBlendTitle("Untitled document");
+    setCopyMode("shallow");
   }, []);
 
   // ── Persistence ────────────────────────────────────────────────────────
@@ -174,10 +194,11 @@ export function useCBlend() {
         title:   blendTitle,
         layout:  layout || "custom",
         created: new Date().toISOString(),
+        copyMode,
       },
       blocks,
     }),
-    [blendId, blendTitle, layout, blocks]
+    [blendId, blendTitle, layout, blocks, copyMode]
   );
 
   const save = useCallback(async () => {
@@ -206,6 +227,7 @@ export function useCBlend() {
     setBlendId(doc.id);
     setBlendTitle(doc.meta?.title ?? "Untitled");
     setLayout(doc.meta?.layout ?? null);
+    setCopyMode(doc.meta?.copyMode ?? "shallow");
     setBlocks(doc.blocks ?? []);
     return doc;
   }, []);
@@ -214,6 +236,7 @@ export function useCBlend() {
     blendId, blendTitle, setBlendTitle,
     layout, blocks,
     saving,
+    copyMode, setCopyMode,
     addBlock, removeBlock, updateBlock, reorder,
     addRow, addToRow, removeFromRow, reorderInRow, updateRow,
     applyLayout, clear, save, load, buildDoc,

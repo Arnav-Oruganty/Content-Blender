@@ -19,15 +19,22 @@ export function buildCBlendXML(doc) {
   const id      = esc(doc?.id            || "");
   const blocks  = doc?.blocks || [];
 
+  const copyMode = esc(doc?.meta?.copyMode || "shallow");
+  const isDeepCopy = copyMode === "deep";
+
   const lines = [
     `<?xml version="1.0" encoding="UTF-8"?>`,
     `<cblend id="${id}">`,
-    `  <meta title="${title}" layout="${layout}" created="${created}"/>`,
+    `  <meta title="${title}" layout="${layout}" created="${created}" copyMode="${copyMode}"/>`,
   ];
 
   blocks.forEach((b) => {
     const isListLike = ["list", "card"].includes(b.type);
-    lines.push(`  <include ref="${esc(b.ref || b.uid)}" type="${esc(b.type)}" uid="${esc(b.uid)}">`);
+    if (isDeepCopy) {
+      lines.push(`  <include type="${esc(b.type)}" uid="${esc(b.uid)}">`);
+    } else {
+      lines.push(`  <include ref="${esc(b.ref || b.uid)}" type="${esc(b.type)}" uid="${esc(b.uid)}">`);
+    }
     if (isListLike && b.items?.length) {
       b.items.forEach((item) => lines.push(`    <item>${esc(item)}</item>`));
     } else {

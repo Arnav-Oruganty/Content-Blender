@@ -430,8 +430,17 @@ export default function ComposerPage() {
 
   // Load existing blend if navigated to /composer/:id
   useEffect(() => {
-    if (routeBlendId && routeBlendId !== blend.blendId) {
-      blend.load(routeBlendId).catch(() => toast.error("Could not load document"));
+    if (routeBlendId) {
+      if (routeBlendId !== blend.blendId) {
+        blend.load(routeBlendId).catch(() => toast.error("Could not load document"));
+      }
+    } else {
+      // Navigated to /composer (Create new document)
+      // If the current draft belongs to a saved document, clear it for a blank slate.
+      // If it has no ID, it's an unsaved draft of a new document, so we keep it!
+      if (blend.blendId) {
+        blend.clear();
+      }
     }
   }, [routeBlendId]);
 
@@ -698,6 +707,18 @@ export default function ComposerPage() {
           <button className="btn" onClick={() => blend.addRow(2)}>+ Row</button>
           <button className="btn" onClick={blend.clear}>Clear</button>
           <button className="btn" onClick={handleRename}>Rename</button>
+          
+          <select 
+            className="btn" 
+            style={{ appearance: "auto", paddingRight: "24px" }}
+            value={blend.copyMode} 
+            onChange={(e) => blend.setCopyMode(e.target.value)}
+            title="Shallow uses references to CBank, Deep embeds content completely"
+          >
+            <option value="shallow">Shallow Copy</option>
+            <option value="deep">Deep Copy</option>
+          </select>
+          
           <button className="btn" onClick={ensureSaved} disabled={blend.saving}>
             {blend.saving ? "Saving…" : "Save"}
           </button>

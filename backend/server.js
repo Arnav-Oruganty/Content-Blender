@@ -50,9 +50,27 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 4000;
 
 async function boot() {
+  const backend = process.env.STORAGE_BACKEND || "file";
+
+  if (backend === "basex") {
+    const basexClient = require("./utils/basex");
+    const isReachable = await basexClient.ping();
+    if (!isReachable) {
+      throw new Error("BaseX server is not reachable. Please check BASEX_HOST and BASEX_PORT.");
+    }
+    console.log("🗄️   BaseX server reachable");
+  }
+
   app.listen(PORT, () => {
     console.log(`\n✅  Content Blender API running on http://localhost:${PORT}`);
-    console.log(`   Storage backend : file (XML-based)`);
+    console.log(`   Storage backend : ${backend}`);
+    if (backend === "basex") {
+      const host = process.env.BASEX_HOST || "127.0.0.1";
+      const bport = process.env.BASEX_PORT || "1984";
+      console.log(`   BaseX           : ${host}:${bport}`);
+    } else {
+      console.log(`   Storage backend : file (XML-based)`);
+    }
     console.log(`   Environment     : ${process.env.NODE_ENV || "development"}\n`);
   });
 }

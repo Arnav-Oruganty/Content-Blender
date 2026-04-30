@@ -7,7 +7,7 @@
     <content>Section Heading</content>
   </cblock>
   <cblock id="b3" type="paragraph" name="Body Paragraph" version="1.0">
-    <content>Paragraph content here.</content>
+    <content>Paragraph content here I AM SHALLOW.</content>
   </cblock>
   <cblock id="b4" type="image" name="Image Block" version="1.0">
     <content>image.jpg</content>
@@ -40,6 +40,6 @@ Subtitle here</content>
   </cblock>
   <cblock id="Image2" type="image" name="Campus Photo IIITB" version="1.0">
     <content></content>
-    <metadata sourceType="local" url="/uploads/0d5770bb-dd15-4cf6-895b-4be314ace1e6.webp" altText="IIITB Campus Photo" caption="IIITB"></metadata>
+    <metadata sourceType="local" url="/uploads/2ee3ea25-70a5-42cb-8080-e86385918728.jpeg" altText="IIITB Campus Photo" caption="IIITB"></metadata>
   </cblock>
 </cbank>
