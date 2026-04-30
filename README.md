@@ -19,11 +19,11 @@ content-blender/
 │   ├── middleware/
 │   │   └── errorHandler.js
 │   ├── storage/
-│   │   ├── storageAdapter.js       # Selects file vs mongo adapter
-│   │   ├── fileAdapter.js          # XML-on-disk (default / dev)
-│   │   └── mongoAdapter.js         # MongoDB via Mongoose
+│   │   ├── storageAdapter.js       # Selects file vs basex adapter
+│   │   ├── fileAdapter.js          # XML-on-disk
+│   │   └── basexAdapter.js         # BaseX XML database
 │   └── utils/
-│       ├── db.js                   # Mongoose connection
+│       ├── basex.js                # BaseX client driver
 │       └── xmlTransform.js         # XML ↔ JSON via fast-xml-parser
 │
 └── frontend/
@@ -62,7 +62,7 @@ npm run dev                 # starts on http://localhost:4000
 | `STORAGE_BACKEND` | Description |
 |---|---|
 | `file` (default) | Persists CBank as `storage/cbank.xml`, each CBlend as `storage/blends/<id>.xml` |
-| `mongo` | Stores everything in MongoDB; requires a valid `MONGO_URI` |
+| `basex` | Stores everything in a local or remote BaseX native XML database |
 
 Switch at any time by changing the env var — no code change needed.
 
@@ -231,12 +231,15 @@ XML (CBank / CBlend)
 
 ---
 
-## Switching to MongoDB
+## Switching to BaseX
 
-1. Spin up MongoDB locally or use Atlas
+1. Ensure BaseX is running locally (`basexserver -S`) or via Docker.
 2. In `backend/.env` set:
    ```
-   STORAGE_BACKEND=mongo
-   MONGO_URI=mongodb://localhost:27017/content_blender
+   STORAGE_BACKEND=basex
+   BASEX_HOST=localhost
+   BASEX_PORT=1984
+   BASEX_USER=admin
+   BASEX_PASSWORD=admin
    ```
-3. Restart the backend — collections are created automatically on first write.
+3. Restart the backend — the `content_blender` database and initial seed blocks are created automatically on first startup.

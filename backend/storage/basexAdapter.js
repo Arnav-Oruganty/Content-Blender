@@ -23,7 +23,7 @@ async function ensureInit() {
         { id:"b1", type:"title",     name:"Page Title",       version:"1.0", content:"Document Title",            items:[] },
         { id:"b2", type:"section",   name:"Section Heading",  version:"1.0", content:"Section Heading",           items:[] },
         { id:"b3", type:"paragraph", name:"Body Paragraph",   version:"1.0", content:"Paragraph content here.",   items:[] },
-        { id:"b4", type:"image",     name:"Image Block",      version:"1.0", content:"image.jpg",                 items:[] },
+        { id:"b4", type:"image",     name:"Image Block",      version:"1.0", content:"", url:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80", items:[] },
         { id:"b5", type:"quote",     name:"Pull Quote",       version:"1.0", content:"A memorable quote.",        items:[] },
         { id:"b6", type:"list",      name:"Bullet List",      version:"1.0", content:"",                          items:["Item one","Item two","Item three"] },
         { id:"b7", type:"hero",      name:"Hero Banner",      version:"1.0", content:"Welcome\nSubtitle here",    items:[] },
