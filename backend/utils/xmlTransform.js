@@ -116,10 +116,10 @@ function normaliseInclude(inc, allIncludes = []) {
     width:      inc["@_width"]  ?? "100%",
     height:     inc["@_height"] ?? "auto",
     // Image metadata
-    sourceType: metadata["@_sourceType"] ?? "url",
-    url:        metadata["@_url"]        ?? "",
-    altText:    metadata["@_altText"]    ?? "",
-    caption:    metadata["@_caption"]    ?? "",
+    sourceType: metadata["@_sourceType"],
+    url:        metadata["@_url"],
+    altText:    metadata["@_altText"],
+    caption:    metadata["@_caption"],
     containerType: inc["@_containerType"] ?? null,
     // Row-specific properties
     columns:    inc["@_columns"] ? parseInt(inc["@_columns"]) : undefined,
