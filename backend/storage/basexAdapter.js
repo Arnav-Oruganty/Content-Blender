@@ -15,10 +15,10 @@ const DB_NAME = "content_blender";
 async function ensureInit() {
   await basexClient.ensureDatabase(DB_NAME);
   
-  // Check if cbank exists
+  // Check if cbank exists and create if needed
   try {
-    const exists = await basexClient.query(`db:exists('${DB_NAME}', 'cbank/cbank.xml')`);
-    if (exists.trim() === "false") {
+    const cbankExists = await basexClient.query(`db:exists('${DB_NAME}', 'cbank/cbank.xml')`);
+    if (cbankExists.trim() === "false") {
       const seed = buildCBankXML([
         { id:"b1", type:"title",     name:"Page Title",       version:"1.0", content:"Document Title",            items:[] },
         { id:"b2", type:"section",   name:"Section Heading",  version:"1.0", content:"Section Heading",           items:[] },
@@ -31,6 +31,15 @@ async function ensureInit() {
       ]);
       await basexClient.replace("cbank/cbank.xml", seed);
       console.log("   📦  BaseX: CBank seeded with 8 default blocks");
+    }
+    
+    // Initialize blends collection (create empty placeholder)
+    const blendsExist = await basexClient.query(`db:exists('${DB_NAME}', 'blends')`);
+    if (blendsExist.trim() === "false") {
+      // Create a placeholder document so the collection exists
+      const placeholder = `<?xml version="1.0"?><blends/>`;
+      await basexClient.add("blends/_.xml", placeholder);
+      console.log("   📦  BaseX: Blends collection initialized");
     }
   } catch (err) {
     console.error("BaseX Init Error:", err);
@@ -100,7 +109,13 @@ async function getBlend(id) {
 
 async function saveBlend(doc) {
   const xml = buildCBlendXML(doc);
-  await basexClient.replace(`blends/${doc.id}.xml`, xml);
+  // First try to replace (for updates), then add (for new documents)
+  try {
+    await basexClient.replace(`blends/${doc.id}.xml`, xml);
+  } catch (err) {
+    // If replace fails, try adding (new document)
+    await basexClient.add(`blends/${doc.id}.xml`, xml);
+  }
   return doc;
 }
 
