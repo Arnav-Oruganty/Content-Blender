@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cblend id="blend-u8forx2z">
+  <meta title="deepcpy1" layout="landing" created="2026-05-01T05:34:24.004Z" copyMode="deep"></meta>
+  <include type="hero" uid="um6ejn5z">
+    <content>Build Something Amazing
+The fastest way to ship your ideas</content>
+  </include>
+  <include type="section" uid="u15vke2g">
+    <content>Why it works</content>
+  </include>
+  <include type="card" uid="u679oz2m">
+    <item>⚡ Blazing fast</item>
+    <item>🔒 Secure by default</item>
+    <item>📦 Zero config</item>
+    <item>🌍 Global CDN</item>
+  </include>
+  <include type="section" uid="uj358po0">
+    <content>How it works</content>
+  </include>
+  <include type="paragraph" uid="uyt38qqn">
+    <content>Three simple steps. Sign up in seconds, drop in your content, and go live instantly. No credit card required.</content>
+  </include>
+  <include type="list" uid="u6zkynu4">
+    <item>Create your account</item>
+    <item>Add your content blocks</item>
+    <item>Publish to the world</item>
+  </include>
+  <include type="quote" uid="uiddbmq2">
+    <content>We shipped our entire documentation site in under an hour. Absolutely game-changing.</content>
+  </include>
+  <include type="section" uid="ubhx3npu">
+    <content>Get started today</content>
+  </include>
+  <include type="paragraph" uid="uebl9vum">
+    <content>Join thousands of teams already using Content Blender to build faster.</content>
+  </include>
+</cblend>
