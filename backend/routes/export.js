@@ -138,7 +138,7 @@ async function blendToHTML(doc) {
   <title>${title}</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; line-height: 1.7; color: #1a1a1a; max-width: 980px; margin: 0 auto; padding: 2rem 1.5rem; }
+    body { font-family: system-ui, sans-serif; line-height: 1.7; color: #1a1a1a; max-width: 100%; margin: 0 auto; padding: 2rem 1.5rem; }
     .cb-title { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
     .cb-section { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #555; margin: 2rem 0 .75rem; padding-bottom: .4rem; border-bottom: 1px solid #e0e0e0; }
     .cb-para { margin-bottom: 1rem; color: #333; }
